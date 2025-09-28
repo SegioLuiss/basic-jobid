@@ -11,11 +11,14 @@ app.post("/storeJobId", (req, res) => {
     sessions = sessions.filter(s => s.mainUser !== mainUser);
 
     sessions.push({ mainUser, jobId, placeId });
-    res.json({ success: true });
+
+    res.json({ success: true, message: "บันทึก JobId เรียบร้อย (ทับอันเก่าแล้ว)" });
 });
+
 
 app.get("/getJobId", (req, res) => {
     res.json(sessions);
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));
+
